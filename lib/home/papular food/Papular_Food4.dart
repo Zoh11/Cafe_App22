@@ -15,7 +15,7 @@ class PapularFood4 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          bigText(text: "Kohat kaboob"),
+          bigText(text: " Seafood paella"),
           const SizedBox(
             height: 8,
           ),

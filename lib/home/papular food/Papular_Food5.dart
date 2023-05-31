@@ -15,8 +15,8 @@ class PapularFood5 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          bigText(text: "Chinese Side"),
-          SizedBox(
+          bigText(text: "Som tam, Thailand"),
+          const SizedBox(
             height: 8,
           ),
           SmallText(text: 'with chinese characteristic'),

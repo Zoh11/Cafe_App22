@@ -87,7 +87,7 @@ class MultiplePages extends StatelessWidget {
                       height: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Colors.white,
+                        color: const Color(0xFF89dad0),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +115,7 @@ class MultiplePages extends StatelessWidget {
                       height: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Colors.white,
+                        color: const Color(0xFF89dad0),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

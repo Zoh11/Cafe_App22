@@ -8,6 +8,11 @@ import 'package:flutter_application_1/home/papular%20food/Papular_Food3.dart';
 import 'package:flutter_application_1/home/papular%20food/Papular_Food4.dart';
 import 'package:flutter_application_1/home/papular%20food/Papular_Food5.dart';
 import 'package:flutter_application_1/home/papular%20food/Papular_Food2.dart';
+import 'package:flutter_application_1/home/papular%20food/Papular_Small_Container/PapularSmallContainer1.dart';
+import 'package:flutter_application_1/home/papular%20food/Papular_Small_Container/PapularSmallContainer2.dart';
+import 'package:flutter_application_1/home/papular%20food/Papular_Small_Container/PapularSmallContainer3.dart';
+import 'package:flutter_application_1/home/papular%20food/Papular_Small_Container/PapularSmallContainer4.dart';
+import 'package:flutter_application_1/home/papular%20food/Papular_Small_Container/PapularSmallContainer5.dart';
 import 'package:flutter_application_1/home/small_container/Small_Container1.dart';
 import 'package:flutter_application_1/home/small_container/Small_Container2.dart';
 import 'package:flutter_application_1/home/small_container/Small_Container3.dart';
@@ -62,9 +67,17 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   ];
 
   List settingContner = [
-    const SignupPage(),
+    const SignUpPAge(),
     const LoginPage(),
     const ProfilePage(),
+  ];
+  // ignore: non_constant_identifier_names
+  List PapularsmallContainer = [
+    const PapularSmallContainer1(),
+    PapularSmallContainer2(),
+    PapularSmallContainer3(),
+    PapularSmallContainer4(),
+    PapularSmallContainer5(),
   ];
   PageController pageController = PageController(viewportFraction: 0.85);
   var currpageValue = 0.0;
@@ -163,14 +176,26 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 250,
-                            height: 110,
-                            child: Papularffood[index],
-                          )
-                        ],
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return PapularsmallContainer[index];
+                              },
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 250,
+                              height: 110,
+                              child: Papularffood[index],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],

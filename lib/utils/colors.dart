@@ -25,4 +25,10 @@ class AppColors {
   Color cyanColor = Color(0xFF6D7E6E);
 
   Duration kAnimationDuration = Duration(milliseconds: 200);
+  // class AllinOnboardModel {
+  // String imgStr;
+  // String description;
+  // String titlestr;
+  // AllinOnboardModel(this.imgStr, this.description, this.titlestr);
+// }
 }

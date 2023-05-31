@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/Main_Food_Page.dart';
 import 'package:flutter_application_1/widgets/SettingFolder/Profile.dart';
-import 'package:flutter_application_1/widgets/setting.dart';
+import 'package:flutter_application_1/widgets/History.dart';
 import 'package:flutter_application_1/widgets/shopping.dart';
 
 class MyStatefulWidget extends StatefulWidget {

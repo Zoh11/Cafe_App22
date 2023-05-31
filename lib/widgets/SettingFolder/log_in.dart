@@ -1,172 +1,169 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/BottomAppBarr.dart';
+import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/widgets/Big_text.dart';
+import 'package:flutter_application_1/widgets/SettingFolder/AppTextwidget.dart';
 import 'package:flutter_application_1/widgets/SettingFolder/sign_up.dart';
-import 'package:flutter_application_1/widgets/Small_text.dart';
+// ignore: depend_on_referenced_packages
+import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
+import '../BottomAppBarr.dart';
+import 'Show_custom_massges.dart';
+
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  var phoneText = TextEditingController();
-  var passText = TextEditingController();
-
-  @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
+    var PasswordController = TextEditingController();
+    var phoneController = TextEditingController();
+    void _registration() {
+      String phone = phoneController.text.trim();
+      String password = PasswordController.text.trim();
+
+      if (phone.isEmpty) {
+        ShowCustomSnackBar('Type in your phone', title: 'Phone number');
+      } else if (password.isEmpty) {
+        ShowCustomSnackBar('Type in your password', title: 'passwrod');
+      } else {
+        ShowCustomSnackBar('All went well', title: 'perfect');
+      }
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(''),
-      ),
-      body: Center(
-        child: Container(
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 140,
-                height: 140,
-                child: Image.asset('assets/images/logopart1.png'),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 60,
+            ),
+            Container(
+              height: 100,
+              child: Center(
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 80,
+                  backgroundImage: AssetImage('assets/images/logopart1.png'),
+                ),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Column(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.maxFinite,
+              margin: EdgeInsets.only(left: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 180),
-                    child: Text(
-                      'Hello',
-                      style:
-                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                    ),
+                  Text(
+                    'Hello',
+                    style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 160),
-                    child: Text(
-                      'Sign into your account',
+                  Text(
+                    'Sign in your account',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey[500],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
-              TextField(
-                controller: phoneText,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(31),
-                    borderSide: BorderSide(color: Colors.red, width: 2),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AppTextWidget(
+                textController: phoneController,
+                hintText: 'phone',
+                icon: Icons.phone),
+            SizedBox(
+              height: 12,
+            ),
+            AppTextWidget(
+                textController: PasswordController,
+                hintText: 'Password',
+                icon: Icons.password),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: 'Sign in your account',
+                    style: TextStyle(color: Colors.grey[500], fontSize: 17),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(31),
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const MyStatefulWidget();
+                    },
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(31),
+                );
+              },
+              // child: GestureDetector(
+              //   onTap: () {
+              //     _registration();
+              //   },
+              child: Container(
+                width: 140,
+                height: 65,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.mainColor,
+                ),
+                child: Center(
+                  child: bigText(
+                    text: "Sign in",
+                    size: 20,
+                    color: Colors.white,
                   ),
-                  hintText: 'Phone No.',
-                  prefixIcon: Icon(Icons.phone_android),
                 ),
               ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: passText,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(31),
-                    borderSide: BorderSide(color: Colors.red, width: 2),
+              // ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            RichText(
+              text: TextSpan(
+                  text: 'Don\'t Have an account?',
+                  style: TextStyle(
+                    color: Colors.grey[500],
+                    fontSize: 15,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(31),
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(31),
-                  ),
-                  hintText: 'Password',
-                  prefixIcon: Icon(Icons.password),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 150),
-                child: Text('sign into your account'),
-              ),
-              SizedBox(height: 10),
-              const SizedBox(height: 25),
-              ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFF89dad0)),
-                    minimumSize: MaterialStateProperty.all<Size>(Size(150, 55)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ))),
-                onPressed: () {
-                  String uphone = phoneText.text.toString();
-                  String upass = passText.text;
-                  print('Phone: $uphone, Password: $upass');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MyStatefulWidget();
-                      },
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Sign in',
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 60),
-                  child: Container(
-                      child: Row(
-                    children: [
-                      SmallText(
-                        text: 'Dont have an Acount? ',
-                        size: 15,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return SignupPage();
-                              },
+                  children: [
+                    TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        // ignore: avoid_print
+                        ..onTap = () => Get.to(
+                              () => const SignUpPAge(),
+                              transition: Transition.fade,
                             ),
-                          );
-                        },
-                        child: Hero(
-                          tag: 'Signup',
-                          child: SmallText(
-                            text: 'Create',
-                            size: 15,
-                          ),
-                        ),
+                      text: ' Create',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.mainBlackColor,
+                        fontSize: 15,
                       ),
-                    ],
-                  )),
-                ),
-              ),
-            ],
-          ),
+                    ),
+                  ]),
+            ),
+          ],
         ),
       ),
     );
